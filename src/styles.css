@@ -1,0 +1,886 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Reino das Cores — Premium Streaming Design System
+ * Tema escuro cinematográfico inspirado em plataformas de conteúdo premium.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-elevated: var(--elevated);
+
+  --color-sky: var(--sky);
+  --color-sky-foreground: var(--sky-foreground);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-coral: var(--coral);
+  --color-coral-foreground: var(--coral-foreground);
+  --color-mint: var(--mint);
+  --color-mint-foreground: var(--mint-foreground);
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-soft: 0 4px 16px -4px oklch(0 0 0 / 0.35);
+  --shadow-card: 0 12px 32px -12px oklch(0 0 0 / 0.55);
+  --shadow-elevated: 0 18px 50px -18px oklch(0 0 0 / 0.65);
+  --shadow-cinematic: 0 30px 80px -20px oklch(0 0 0 / 0.75), 0 0 0 1px oklch(1 0 0 / 0.04);
+  --shadow-hero: 0 30px 70px -20px oklch(0 0 0 / 0.7);
+  --shadow-glow-gold: 0 0 40px -8px oklch(0.83 0.13 85 / 0.45);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Bases creme/areia (mantidas para compatibilidade com a tela de colorir) */
+  --cream: oklch(0.985 0.018 85);
+  --sand: oklch(0.955 0.028 85);
+
+  /* Premium dark — azul noite cinematográfico */
+  --background: oklch(0.18 0.03 256); /* #0E1726 */
+  --foreground: oklch(0.97 0.005 250); /* #F6F7FB */
+
+  /* Superfícies premium */
+  --surface: oklch(0.24 0.035 256); /* #18263B */
+  --surface-2: oklch(0.29 0.04 256); /* #21314A */
+  --elevated: oklch(0.34 0.045 256); /* #2A3B59 */
+
+  --card: oklch(0.24 0.035 256);
+  --card-foreground: oklch(0.97 0.005 250);
+
+  --popover: oklch(0.24 0.035 256);
+  --popover-foreground: oklch(0.97 0.005 250);
+
+  /* Primary = dourado quente premium #F4BE63 */
+  --primary: oklch(0.83 0.13 82);
+  --primary-foreground: oklch(0.2 0.03 256);
+
+  --secondary: oklch(0.29 0.04 256);
+  --secondary-foreground: oklch(0.97 0.005 250);
+
+  --muted: oklch(0.29 0.04 256);
+  --muted-foreground: oklch(0.7 0.025 250); /* #93A4BD */
+
+  --accent: oklch(0.34 0.045 256);
+  --accent-foreground: oklch(0.97 0.005 250);
+
+  --destructive: oklch(0.65 0.18 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.1);
+  --ring: oklch(0.83 0.13 82);
+
+  /* Cores nomeadas — refinadas para o tema escuro */
+  --sky: oklch(0.72 0.14 250); /* #69A7FF azul premium */
+  --sky-foreground: oklch(0.18 0.03 256);
+  --deep: oklch(0.5 0.13 252);
+  --deep-foreground: oklch(0.99 0 0);
+  --gold: oklch(0.83 0.13 82); /* #F4BE63 */
+  --gold-foreground: oklch(0.2 0.03 256);
+  --coral: oklch(0.78 0.13 35); /* #FF9B7A */
+  --coral-foreground: oklch(0.2 0.03 256);
+  --mint: oklch(0.82 0.11 165); /* #7BCFA7 */
+  --mint-foreground: oklch(0.2 0.03 256);
+
+  --chart-1: var(--gold);
+  --chart-2: var(--sky);
+  --chart-3: var(--coral);
+  --chart-4: var(--mint);
+  --chart-5: var(--deep);
+
+  --sidebar: oklch(0.22 0.035 256);
+  --sidebar-foreground: oklch(0.97 0.005 250);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: oklch(0.2 0.03 256);
+  --sidebar-accent: oklch(0.29 0.04 256);
+  --sidebar-accent-foreground: oklch(0.97 0.005 250);
+  --sidebar-border: oklch(1 0 0 / 0.08);
+  --sidebar-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--color-background);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+}
+
+/* Utilitários reutilizáveis */
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .premium-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--primary) 60%, transparent) transparent;
+  }
+  .premium-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .premium-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .premium-scrollbar::-webkit-scrollbar-thumb {
+    min-height: 48px;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
+    background-color: color-mix(in oklab, var(--primary) 55%, transparent);
+  }
+  .premium-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklab, var(--primary) 80%, transparent);
+  }
+
+  .bg-gradient-hero {
+    background-image: linear-gradient(135deg, var(--surface) 0%, var(--background) 100%);
+  }
+  .bg-gradient-warm {
+    background-image: linear-gradient(135deg, var(--gold) 0%, var(--coral) 100%);
+  }
+  .bg-gradient-cream {
+    /* Mantido por compatibilidade com tela de colorir e 404 */
+    background-image: linear-gradient(180deg, var(--cream) 0%, var(--sand) 100%);
+  }
+  .bg-gradient-surface {
+    background-image: linear-gradient(180deg, var(--surface) 0%, var(--background) 100%);
+  }
+  .bg-gradient-vignette {
+    background-image:
+      linear-gradient(
+        180deg,
+        transparent 30%,
+        oklch(0.18 0.03 256 / 0.85) 80%,
+        oklch(0.18 0.03 256) 100%
+      ),
+      linear-gradient(
+        90deg,
+        oklch(0.18 0.03 256 / 0.85) 0%,
+        oklch(0.18 0.03 256 / 0.4) 50%,
+        transparent 100%
+      );
+  }
+  .bg-gradient-gold {
+    background-image: linear-gradient(135deg, oklch(0.88 0.12 88) 0%, oklch(0.78 0.14 75) 100%);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  .shadow-cinematic {
+    box-shadow: var(--shadow-cinematic);
+  }
+  .shadow-hero {
+    box-shadow: var(--shadow-hero);
+  }
+  .shadow-glow-gold {
+    box-shadow: var(--shadow-glow-gold);
+  }
+
+  .glass-dark {
+    background-color: oklch(0.2 0.03 256 / 0.7);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  /* Anima entrada suave */
+  @keyframes float-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-float-in {
+    animation: float-in 0.5s ease-out both;
+  }
+
+  @keyframes achievement-pop {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  .achievement-pop {
+    animation: achievement-pop 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Splash quando uma área é pintada na tela de colorir */
+  @keyframes paint-splash {
+    0% {
+      opacity: 0.35;
+      transform: scale(0.92);
+    }
+    60% {
+      opacity: 1;
+      transform: scale(1.04);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .paint-splash {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: paint-splash 320ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  /*
+    Pulso amarelo-dourado para destacar regiões AINDA NÃO pintadas
+    quando a criança toca em "Mostrar o que falta". Usa stroke amplo +
+    drop-shadow para chamar a atenção sem alterar o fill (continua
+    branco/transparente). Dura ~2.5s e desaparece sozinho.
+  */
+  @keyframes pulse-missing {
+    0%,
+    100% {
+      stroke: hsl(38 95% 55%);
+      stroke-width: 4;
+      filter: drop-shadow(0 0 6px hsl(38 95% 55% / 0.7));
+    }
+    50% {
+      stroke: hsl(20 95% 60%);
+      stroke-width: 7;
+      filter: drop-shadow(0 0 14px hsl(20 95% 60% / 0.95));
+    }
+  }
+  .pulse-missing {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulse-missing 700ms ease-in-out 0s 4 both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .achievement-pop,
+    .paint-splash,
+    .pulse-missing {
+      animation: none;
+    }
+  }
+
+  /* +1 flutuante quando uma área nova é pintada */
+  @keyframes paint-plus-one {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -10%) scale(0.6);
+    }
+    20% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1.1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -160%) scale(1);
+    }
+  }
+  .paint-plus-one {
+    animation: paint-plus-one 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .paint-plus-one {
+      animation: none;
+      opacity: 0;
+    }
+  }
+
+  /* Shimmer dos skeleton loaders das capas */
+  @keyframes shimmer {
+    100% {
+      transform: translateX(200%);
+    }
+  }
+
+  /* Efeito de seleção do swatch de cor.
+   * IMPORTANTE: o container da paleta usa overflow-x-auto, então qualquer
+   * box-shadow que extrapole o tamanho do botão é cortado e vira um
+   * "quadrado" visível. Por isso usamos APENAS efeitos internos
+   * (inset shadow + ring) que ficam dentro do círculo, mantendo o tamanho
+   * e posição idênticos aos demais swatches. */
+  /* Estado selecionado do swatch: usa apenas transição CSS de box-shadow
+   * (inset, dentro do círculo) — sem animação infinita e sem transform,
+   * para não causar deslocamento nem quebrar o alinhamento da paleta. */
+  .color-swatch-selected {
+    position: relative;
+    box-shadow:
+      inset 0 0 0 3px hsl(0 0% 100% / 1),
+      inset 0 0 0 5px hsl(0 0% 0% / 0.35);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .color-swatch-selected {
+      box-shadow:
+        inset 0 0 0 3px hsl(0 0% 100% / 1),
+        inset 0 0 0 4px hsl(0 0% 0% / 0.3);
+    }
+  }
+
+  /* Badge "Concluída" no canvas: pop-in suave + leve respiro contínuo. */
+  @keyframes page-completed-pop {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -8px) scale(0.8);
+    }
+    60% {
+      opacity: 1;
+      transform: translate(-50%, 2px) scale(1.06);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+  }
+  .page-completed-badge {
+    animation: page-completed-pop 480ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .page-completed-badge {
+      animation: none;
+    }
+  }
+}
+
+/*
+ * Sonner toasts — respeitar prefers-reduced-motion.
+ *
+ * Por padrão o sonner usa transform/opacity para deslizar o toast a partir
+ * da borda + animar swipe. Em "reduce", removemos a animação de entrada/saída
+ * e o swipe, deixando o toast aparecer instantaneamente, sem deslocamento.
+ * Mantemos as classes do tema (cores, bordas, sombra) intactas.
+ */
+@media (prefers-reduced-motion: reduce) {
+  [data-sonner-toaster] [data-sonner-toast] {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  [data-sonner-toaster] [data-sonner-toast][data-swiping="true"],
+  [data-sonner-toaster] [data-sonner-toast][data-swipe-out="true"] {
+    transform: none !important;
+    transition: opacity 80ms linear !important;
+  }
+}
+
+/*
+ * Badge "Nome atualizado agora" — entrada suave nos modais de pintura
+ * quando o pai/responsável altera o nome em outra aba ou janela.
+ * Curta, premium, sem brilho exagerado. Em prefers-reduced-motion o
+ * elemento aparece de forma instantânea.
+ */
+@keyframes name-updated-badge-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.name-updated-badge {
+  animation: name-updated-badge-in 320ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .name-updated-badge {
+    animation: none;
+  }
+}
+
+/*
+ * Barra de loading curta para transições entre rotas (ex.: ir de uma
+ * história para outra). Estilo "app nativo": fina no topo, com brilho
+ * suave em primary/gold.
+ *
+ * Estados:
+ *  - data-state="loading"   → fade-in da barra + animação contínua
+ *    (indeterminate) que sugere progresso.
+ *  - data-state="finishing" → barra completa o trajeto até 100% e some,
+ *    aplicada quando o router sinaliza isLoading=false.
+ *
+ * prefers-reduced-motion:
+ *  - Sem animação contínua nem fade — a barra aparece estática, ocupando
+ *    100% da largura, com cor sólida, e some sem transição perceptível.
+ */
+.route-transition-bar {
+  background: color-mix(in oklab, var(--primary) 10%, transparent);
+  animation: route-transition-bar-fade-in 140ms ease-out both;
+}
+.route-transition-bar__fill {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, var(--primary) 35%, var(--gold) 65%, transparent);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--gold) 60%, transparent);
+  transform: translateX(-100%);
+  animation: route-transition-bar-slide 1100ms cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.route-transition-bar[data-state="finishing"] .route-transition-bar__fill {
+  width: 100%;
+  animation: route-transition-bar-finish 280ms ease-out forwards;
+}
+@keyframes route-transition-bar-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes route-transition-bar-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+@keyframes route-transition-bar-finish {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-transition-bar {
+    animation: none;
+    background: color-mix(in oklab, var(--primary) 18%, transparent);
+  }
+  .route-transition-bar__fill {
+    width: 100%;
+    transform: none;
+    animation: none;
+    background: var(--primary);
+    box-shadow: none;
+  }
+  .route-transition-bar[data-state="finishing"] .route-transition-bar__fill {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/*
+ * Mobile tab bar — barra inferior fixa estilo app nativo.
+ *
+ * Decisões críticas para estabilidade total no mobile:
+ *
+ *  1. ALTURA TRAVADA com `calc(64px + env(safe-area-inset-bottom))`
+ *     em `height` + `min-height` + `max-height`. Isso impede que o
+ *     browser comprima a barra quando o viewport recalcula durante
+ *     o scroll (bug forte do print 1) ou quando o flex/grid do pai
+ *     redistribui espaço. A safe-area entra na ALTURA, não como
+ *     padding variável — assim a barra nunca "muda de tamanho".
+ *
+ *  2. FUNDO SÓLIDO sem backdrop-filter. O `backdrop-blur` re-amostra
+ *     todos os pixels por baixo a cada frame de scroll, e isso é a
+ *     causa principal do "bug leve" (cenário B): micro-tremor e
+ *     flicker quando o conteúdo rola por trás. Fundo opaco resolve.
+ *
+ *  3. `transform: translateZ(0)` promove a barra a camada de
+ *     composição própria — estabiliza posição em iOS Safari quando
+ *     a barra de URL dinâmica entra/sai. NÃO usamos `contain` aqui
+ *     porque pode interferir com `position: fixed` em alguns engines.
+ *
+ *  4. `flex-shrink: 0` em TODOS os níveis (nav, ul, li, link) — se
+ *     algum ancestral usar flex, a barra e seus itens NÃO podem
+ *     encolher.
+ *
+ *  5. Borda + sombra para profundidade premium, sem blur.
+ */
+.mobile-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  /* Altura total = 64px de tab bar + safe-area do dispositivo. Travada
+     em min/max para impedir qualquer compressão durante recálculo. */
+  height: calc(64px + env(safe-area-inset-bottom));
+  min-height: calc(64px + env(safe-area-inset-bottom));
+  max-height: calc(64px + env(safe-area-inset-bottom));
+  /* Não pode encolher se algum ancestral for flex. */
+  flex-shrink: 0;
+  /* CRÍTICO para alinhamento em dispositivos com notch/home indicator:
+     o nav é display:flex em coluna, com a lista interna ALINHADA AO
+     TOPO (64px de área útil). A safe-area sobra naturalmente abaixo,
+     servindo de "respiro" sob a home indicator — sem comprimir ícones
+     nem labels. Sem isso, o ul ficava centralizado verticalmente e os
+     elementos eram empurrados para cima nos iPhones modernos. */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Camada de composição própria — estabiliza no iOS. */
+  transform: translateZ(0);
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  /* Fundo SÓLIDO (sem backdrop-filter) — elimina micro-tremor causado
+     pelo re-sampling do blur a cada frame de scroll. Usamos o token
+     semântico --background para acompanhar o tema (claro/escuro) sem
+     precisar de overrides; cor sólida e opaca = zero flicker. */
+  background-color: var(--background);
+  /* Borda superior em dois passes para um traço premium e nítido em
+     ambos os temas:
+      - Linha externa: usa --border (token semântico) — cor com alpha
+        embutido funciona em light e dark.
+      - Hairline interna: 1px de highlight sutil acima da borda, dando
+        profundidade tipo "lifted" sem depender de blur.
+     box-shadow é renderizado em camada própria (graças ao
+     translateZ(0) acima), então não causa repaint do conteúdo abaixo
+     durante o scroll — sem flicker. */
+  border-top: 1px solid var(--border);
+  box-shadow:
+    /* highlight interno superior — sutil em dark, invisível em light */
+    inset 0 1px 0 oklch(1 0 0 / 0.05),
+    /* sombra ambiente projetada para cima — curta e suave */ 0 -2px 6px -2px oklch(0 0 0 / 0.18),
+    /* halo profundo — dá sensação de "barra flutuante" sólida */ 0 -12px 32px -16px
+      oklch(0 0 0 / 0.45);
+}
+
+.mobile-tab-bar__list {
+  /* Lista interna ocupa só a parte "tab bar" (64px), deixando o resto
+     da altura total para a safe-area — implementada via padding-bottom
+     no próprio nav. */
+  height: 64px;
+  min-height: 64px;
+  flex-shrink: 0;
+  /* Padding-bottom da safe-area NO PRÓPRIO NAV (não no ul) faria a
+     altura mudar; aqui o ul só ocupa 64px e o nav reserva o resto. */
+}
+
+/*
+ * Modo compacto — ativado quando o teclado virtual está aberto.
+ *
+ * Por quê: no Android/iOS, ao focar um input, o teclado pode ocupar
+ * 40-50% da altura visível. Manter a tab bar com 64px nessa situação
+ * empurra demais o conteúdo e cria sensação de aperto. A variante
+ * compacta:
+ *  - reduz a altura útil de 64px → 48px
+ *  - oculta os labels (via `sr-only` no JSX, mantendo a11y)
+ *  - mantém INTEGRALMENTE o `env(safe-area-inset-bottom)` para que a
+ *    home indicator continue respeitada
+ *  - usa transição suave de 180ms para evitar "pulo" quando o teclado
+ *    abre/fecha
+ *
+ * Fórmula da altura: 48px (área útil compacta) + safe-area do device.
+ */
+.mobile-tab-bar--compact {
+  height: calc(48px + env(safe-area-inset-bottom));
+  min-height: calc(48px + env(safe-area-inset-bottom));
+  max-height: calc(48px + env(safe-area-inset-bottom));
+  transition:
+    height 180ms ease-out,
+    min-height 180ms ease-out,
+    max-height 180ms ease-out;
+}
+
+.mobile-tab-bar--compact .mobile-tab-bar__list {
+  height: 48px;
+  min-height: 48px;
+  transition: height 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-tab-bar--compact,
+  .mobile-tab-bar--compact .mobile-tab-bar__list {
+    transition: none;
+  }
+}
+
+/*
+ * Desktop (md+): a tab bar é exclusiva do mobile. O header do desktop
+ * já oferece busca/favoritos/perfil/sino. Forçamos display:none acima
+ * de 768px para que `position:fixed` não escape do `md:hidden` do JSX
+ * em casos de cascade quirky.
+ */
+@media (min-width: 768px) {
+  .mobile-tab-bar {
+    display: none !important;
+  }
+}
+
+/*
+ * App shell mobile — quando o atributo `data-app-shell="mobile"` está
+ * presente no <html>, o documento principal NÃO rola. O scroll vive
+ * dentro de `#app-scroll`, deixando o navegador móvel com menos
+ * razão para mostrar/esconder sua UI nativa (barra inferior, address
+ * bar) durante a rolagem. Isso aproxima a experiência de um app real.
+ *
+ * O atributo é gerenciado em runtime pelo `AppShellController` no
+ * `__root.tsx`: ativado em mobile (≤767px) nas rotas que usam o
+ * cascão padrão (com header e tab bar) e desativado em rotas que
+ * gerenciam o próprio layout (ex.: `/colorir` em `fixed inset-0`,
+ * `/admin` com sidebar sticky, login).
+ */
+html[data-app-shell="mobile"],
+html[data-app-shell="mobile"] body {
+  height: 100dvh;
+  /* Safari < 15.4 não suporta dvh — fallback para svh (smallest viewport). */
+  height: 100svh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  /* iOS Safari: desabilita o "rubber band" do documento principal
+     que arrasta a UI do navegador junto. O bounce continua disponível
+     dentro do `#app-scroll` (controlado abaixo). */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
+  /* Trava o documento como um shell rígido — qualquer translação visual
+     que o iOS tente aplicar para “mostrar” a barra do navegador não
+     desloca o conteúdo da aplicação. */
+  position: fixed;
+  inset: 0;
+  width: 100%;
+}
+
+#app-scroll {
+  /* Container que efetivamente rola em mobile. Em desktop é apenas um
+     wrapper transparente (height/overflow auto via display:contents
+     fallback abaixo). */
+  position: relative;
+}
+
+html[data-app-shell="mobile"] #app-scroll {
+  height: 100dvh;
+  height: 100svh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Bounce contido dentro do app — sem scroll chaining para o body. */
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  /* Reserva espaço para a tab bar fixa (já posicionada por position:fixed
+     no shell). Como o body não rola mais, o padding-bottom precisa
+     ficar AQUI para o último item da página não ficar atrás da barra. */
+  padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  /* `contain: layout paint` isola repaints/reflows dentro do scroller,
+     reduzindo flicker quando o conteúdo é grande. */
+  contain: layout paint;
+}
+
+/*
+ * Quando o app shell mobile está ativo, removemos o padding-bottom
+ * legado do wrapper raiz (`min-h-dvh ... pb-[calc(64px+...)]`) — agora
+ * o espaço para a tab bar é reservado dentro do scroller acima.
+ */
+html[data-app-shell="mobile"] .app-shell-root {
+  min-height: 0;
+  padding-bottom: 0;
+}
+
+/*
+ * Header dentro do app shell — em mobile, sticky em relação ao
+ * `#app-scroll` (não ao documento). Visualmente idêntico, mas grudado
+ * ao topo do nosso shell, não ao chrome do navegador.
+ */
+html[data-app-shell="mobile"] .app-shell-header {
+  position: sticky;
+  top: 0;
+  /* respeita notch / status bar */
+  padding-top: env(safe-area-inset-top);
+}
+
+/*
+ * ──────────────────────────────────────────────────────────────────────
+ *  Anti-bounce universal para containers internos
+ * ──────────────────────────────────────────────────────────────────────
+ * Quando o app shell mobile está ativo, qualquer área rolável DENTRO da
+ * aplicação (carrosséis horizontais, listas com overflow, scroll-areas
+ * do shadcn, containers do Embla, dialogs/sheets com conteúdo longo,
+ * tbody do admin, etc.) precisa CONTER o seu próprio scroll. Sem isso,
+ * ao chegar na borda o gesto vaza para o `#app-scroll` e, em alguns
+ * casos extremos do iOS, até para o body — o que faz a UI nativa do
+ * navegador reaparecer e quebra a sensação de app.
+ *
+ * Estratégia: aplicar `overscroll-behavior: contain` + remover o
+ * "rubber band" do iOS em TODO elemento que tenha overflow (auto/scroll/
+ * hidden) nos eixos x ou y. Usamos seletores de atributo para cobrir
+ * tanto utilitárias do Tailwind quanto componentes shadcn/Radix sem
+ * precisar tocar em cada arquivo. As regras são limitadas ao shell
+ * mobile para não interferir em fluxos desktop (admin, modais largos).
+ */
+html[data-app-shell="mobile"] [class*="overflow-auto"],
+html[data-app-shell="mobile"] [class*="overflow-scroll"],
+html[data-app-shell="mobile"] [class*="overflow-x-auto"],
+html[data-app-shell="mobile"] [class*="overflow-y-auto"],
+html[data-app-shell="mobile"] [class*="overflow-x-scroll"],
+html[data-app-shell="mobile"] [class*="overflow-y-scroll"],
+html[data-app-shell="mobile"] [data-radix-scroll-area-viewport],
+html[data-app-shell="mobile"] [data-embla-container],
+html[data-app-shell="mobile"] [data-state="open"][role="dialog"],
+html[data-app-shell="mobile"] [role="listbox"],
+html[data-app-shell="mobile"] [role="menu"],
+html[data-app-shell="mobile"] [role="tabpanel"][data-state="active"] {
+  overscroll-behavior: contain;
+  /* Mantém o scroll suave do iOS, mas confinado ao próprio elemento. */
+  -webkit-overflow-scrolling: touch;
+  /* `overflow-anchor: none` evita que o navegador reposicione o
+     conteúdo quando algo (ex.: imagem lazy) carrega — outra fonte
+     comum de "saltos" que parecem bounce. */
+  overflow-anchor: none;
+}
+
+/*
+ * Carrosséis horizontais (StoryRow desktop usa `overflow-x-hidden`,
+ * mas no mobile usamos `grid` sem scroll horizontal — ainda assim,
+ * outros componentes com scroll-snap podem aparecer). Quando houver
+ * scroll horizontal interno, evita scroll chaining para o eixo X.
+ */
+html[data-app-shell="mobile"] [class*="overflow-x-"]:not([class*="overflow-x-visible"]) {
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+}
+
+/*
+ * Verticais idem — o eixo Y é o mais sensível porque é nele que o
+ * Safari decide se mostra/esconde a barra de endereço.
+ */
+html[data-app-shell="mobile"] [class*="overflow-y-"]:not([class*="overflow-y-visible"]) {
+  overscroll-behavior-y: contain;
+}
+
+/*
+ * Reforço para dialogs/sheets do shadcn que envolvem conteúdo longo
+ * (ex.: modal de assinatura, álbum de adesivos, perfil em sheet). O
+ * Radix renderiza em portal direto no body, então as regras acima
+ * baseadas em descendência do shell ainda funcionam — mas o overlay
+ * pode permitir que um arrasto sobre o backdrop "puxe" o body. Aqui
+ * matamos esse comportamento explicitamente.
+ */
+html[data-app-shell="mobile"] [data-radix-dialog-overlay],
+html[data-app-shell="mobile"] [data-radix-sheet-overlay],
+html[data-app-shell="mobile"] [data-radix-popper-content-wrapper] {
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+/*
+ * `body` reforço final: mesmo com `position: fixed; overflow: hidden`,
+ * alguns navegadores ainda permitem que touchmove no body dispare
+ * pull-to-refresh. `touch-action: pan-x pan-y` no body diz ao
+ * navegador que NÓS controlamos esses gestos — bloqueando o gesto
+ * vertical nativo que reabre a UI do browser.
+ */
+html[data-app-shell="mobile"] body {
+  touch-action: pan-x pan-y;
+}
+
+/*
+ * Neutraliza o autofill do Chrome/Safari que pinta inputs com fundo
+ * branco/amarelo claro — quebra o tema escuro do painel admin (ex.:
+ * campo de "Trocar senha" em /admin/usuarios).
+ */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--card) inset !important;
+  box-shadow: 0 0 0 1000px var(--card) inset !important;
+  -webkit-text-fill-color: var(--foreground) !important;
+  caret-color: var(--foreground) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}

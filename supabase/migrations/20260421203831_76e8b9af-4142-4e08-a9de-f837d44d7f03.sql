@@ -1,0 +1,1 @@
+UPDATE public.app_settings SET default_language = 'pt-BR', updated_at = now() WHERE default_language <> 'pt-BR';
