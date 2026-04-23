@@ -20,7 +20,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { useSingleSession } from "@/hooks/use-single-session";
 import { runColoringProgressRecalcJob } from "@/lib/coloring-progress-recalc";
 import { BackendNotConfigured } from "@/components/backend-not-configured";
-import { isSupabaseConfigured } from "@/integrations/supabase/client";
+
+const isSupabaseConfigured = true;
 
 function NotFoundComponent() {
   return (
